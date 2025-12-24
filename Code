@@ -1,0 +1,94 @@
+import java.util.*;
+
+interface Engine { 
+    void start();
+    void stop();
+    void acc();
+} 
+interface Media {
+    void start();
+    void stop();
+}
+interface Brake {
+    void applyBrake();
+}
+
+
+class PowerEngine implements Engine {
+    
+    public void start() {
+        System.out.println("Power engine starts");
+    }
+    public void stop() {
+        System.out.println("Power engine stop");
+    }
+    public void acc() {
+        System.out.println("Power engine accelerate");
+    }
+}
+class ElectricEngine implements Engine {
+    public void start() {
+        System.out.println("Electric engine starts");
+    }
+    public void stop() {
+        System.out.println("Electric engine stop");
+    }
+    public void acc() {
+        System.out.println("Electric engine accelerate");
+    }
+}
+class CdPlayer implements Media {
+    public void start() {
+        System.out.println("music starts");
+    }
+    public void stop() {
+        System.out.println("music stop");
+    }
+}
+
+
+
+class NiceCar {
+    private Engine engine;
+    private Media player = new CdPlayer();
+    
+    public NiceCar() {
+        engine = new PowerEngine();
+    }
+    
+    void start(){
+        engine.start();
+    }
+    void stop() {
+        engine.stop();
+    }
+    void acc() { //acc means Accelerate
+        engine.acc();
+    }
+    void startMusic() {
+        player.start();
+    }
+    void stopMusic() {
+        player.stop();
+    }
+    void upgradeEngine(){
+        this.engine = new ElectricEngine();
+    }
+}
+
+
+class Main {
+    public static void main(String[] args) {
+        
+        NiceCar car = new NiceCar();
+        
+        car.start();
+        car.acc();
+        car.startMusic();
+
+        car.upgradeEngine();
+        car.start();
+
+        car.stop();      
+    }
+}
